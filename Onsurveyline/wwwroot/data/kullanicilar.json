@@ -1,0 +1,26 @@
+[
+  {
+    "id": 5,
+    "kullaniciAdi": "admin",
+    "sifre": "123qwe",
+    "anket": null,
+    "createdTime": "3.01.2022 14:45:23",
+    "puan": 0
+  },
+  {
+    "id": 6,
+    "kullaniciAdi": "meteserbay",
+    "sifre": "123qwe",
+    "anket": null,
+    "createdTime": "3.01.2022 14:45:14",
+    "puan": 0
+  },
+  {
+    "id": 7,
+    "kullaniciAdi": "Kullan\u0131c\u0131",
+    "sifre": "123qwe",
+    "anket": null,
+    "createdTime": "20.03.2022 17:28:44",
+    "puan": 0
+  }
+]

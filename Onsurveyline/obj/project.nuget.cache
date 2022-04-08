@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "IGatNbpH9OP6itvvB8TLpZYgeXktDHCZfUw6eFtmGCXo76OZdB3Gfl/BgrfV8THWivCyDBKIXNc3zr5OnhmA5A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\Onsurveyline\\Onsurveyline\\Onsurveyline.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

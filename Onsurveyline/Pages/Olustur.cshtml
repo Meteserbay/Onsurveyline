@@ -1,0 +1,104 @@
+﻿@page
+@model Onsurveyline.Pages.OlusturModel
+@{
+}
+<html>
+<head>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Onsurveyline</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" id="nav">
+                        @if (Model.ViewData["login"] == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Giris">Giriş Yap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Kayit">Kayıt Ol</a>
+                            </li>
+                        }
+                        @if (Model.ViewData["login"] != null)
+                        {
+                            <li class="nav-item">
+                                <form method="post">
+                                    <button style="border-radius:10px; " class="nav-link text-dark" asp-page-handler="Cikis" asp-area="" asp-page="/Index">Çıkış</button>
+                                </form>
+                            </li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+
+        <div class="jumbotron" style="background-color:#34495e">
+            <h1 style="text-align:center; color:white">Anket Oluştur</h1>
+            <p style="text-align: center; color: white" class="lead">Anketini oluştur ve istediklerinle paylaş!</p>
+
+        </div>
+        <div class="row">
+            <div style=" border-radius:5px;" class="col-md-3" id="menu">
+                <ul>
+                    @if (Model.ViewData["login"] != null)
+                    {
+                        <li><a href="/Profil">Profilim</a></li>
+                    }
+                    <li><a href="/Katil">Ankete Katıl</a></li>
+                    <li><a href="/Trend">Trend Anketler</a></li>
+                    <li><a href="/Olustur">Anket Oluştur</a></li>
+                </ul>
+            </div>
+
+
+
+            <div style=" border-radius: 5px;  background-color: #34495e;" class="col-md-9">
+                <br />
+                <form method="post" asp-page-handler="Olustur" style="margin:5px;">
+                    <div class="form-group">
+                        <label style="color:white;">Anket Başlığı</label>
+                        <input type="text" class="form-control" asp-for="anket.baslik" />
+
+                    </div>
+                    <div class="row" style="margin:5px;">
+                        <label class="col-md-1" style="color:white;">1.Şık: </label>
+                        <input type="text" class=" form-control col-md-10 " asp-for="anket.cevaplar.cevap1"/>
+                    </div>
+                    <div class="row" style="margin:5px;">
+                        <label class="col-md-1" style="color:white;">2.Şık: </label>
+                        <input type="text" class=" form-control col-md-10 " asp-for="anket.cevaplar.cevap2"/>
+
+                    </div>
+                    <div class="row" style="margin:5px;">
+                        <label class="col-md-1" style="color:white;">3.Şık: </label>
+                        <input type="text" class=" form-control col-md-10 " asp-for="anket.cevaplar.cevap3"/>
+
+                    </div>
+                    <div class="row" style="margin:5px;">
+                        <label class="col-md-1" style="color:white;">4.Şık: </label>
+                        <input type="text" class=" form-control col-md-10 " asp-for="anket.cevaplar.cevap4"/>
+
+                    </div>
+                    <button type="submit" style="margin:5px;" class="btn btn-primary">Oluştur</button>
+                    <br /><br />
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

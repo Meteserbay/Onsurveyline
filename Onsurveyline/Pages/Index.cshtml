@@ -1,0 +1,111 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Onsurveyline</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1" id="nav">
+                    @if (Model.ViewData["login"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Giris">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Kayit">Kayıt Ol</a>
+                        </li>
+                    }
+                    @if (Model.ViewData["login"] != null)
+                    {
+                        <li class="nav-item">
+                            <form method="post">
+                                <button style="border-radius:10px; " class="nav-link text-dark" asp-page-handler="Cikis" asp-area="" asp-page="/Index">Çıkış</button>
+                            </form>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+@if (Model.Status == 1)
+{
+    <div class="alert alert-success">
+        Giriş yapıldı
+    </div>
+}
+
+@if (Model.Status == 2)
+{
+    <div class="alert alert-success">
+        Anket başarıyla yüklendi
+    </div>
+}
+
+<div>
+
+    <div class="jumbotron" style="background-color:#34495e">
+        <h1 style="text-align:center; color:white">
+            Onsurveyline
+            @if (Model.ViewData["login"] != null)
+            {
+                @Model.ViewData["login"].ToString()
+            }
+        </h1>
+        <p style="text-align: center; color: white" class="lead">Anketleri Oyunlaştırma Teknikleriyle Deneyimle!</p>
+
+    </div>
+    <div class="row">
+        <div style="border-radius:5px;" class="col-md-3" id="menu">
+            <ul>
+                @if (Model.ViewData["login"] != null)
+                {
+                    <li><a href="/Profil">Profilim</a></li>
+                }
+
+                <li><a href="/Katil">Ankete Katıl</a></li>
+                <li><a href="/Trend">Trend Anketler</a></li>
+                <li><a href="/Olustur">Anket Oluştur</a></li>
+            </ul>
+
+
+
+        </div>
+        <div style=" border-radius: 5px;  " class="col-md-9">
+            @if (Model.anketler != null)
+            {
+                @foreach (var anket in Model.anketler)
+                {
+                    <div class="col-md-3" style="background-color:#34495e"></div>
+                    <div style=" border-radius: 5px; margin-top:10px;  background-color: #34495e;" class="col-md-9">
+                        <br />
+                        <h4 style=" text-align: center;    color: white; ">@anket.baslik</h4>
+                        <p style="margin:5px; color:white;">@anket.cevaplar.cevap1</p>
+                        <p style="margin: 5px; color: white;">@anket.cevaplar.cevap2</p>
+                        <p style="margin: 5px; color: white;">@anket.cevaplar.cevap3</p>
+                        <p style="margin: 5px; color: white;">@anket.cevaplar.cevap4</p>
+                        <div style="background-color: dodgerblue; border-radius:5px;">
+                            <p style="text-align:left; margin:8px;  color:white;">Katılma Kodu: @anket.kod</p>
+                            <p style="margin:8px; color:white;">Katılma Linki: https://localhost:44324/LinkleKatil/?kod=@anket.kod.ToString()</p>
+                        </div>
+                        <br />
+                    </div>
+                }
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

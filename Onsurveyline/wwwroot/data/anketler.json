@@ -1,0 +1,59 @@
+[
+  {
+    "KullaniciId": 6,
+    "anketid": 20,
+    "baslik": "Onsurveyline\u0027yi be\u011Fendiniz mi?",
+    "createdTime": "4.01.2022 14:03:17",
+    "onoff": true,
+    "kod": 111114,
+    "cevaplar": {
+      "anketid": 20,
+      "cevap1": "Evet",
+      "sayac1": 3,
+      "cevap2": "Hayir",
+      "sayac2": 4,
+      "cevap3": "Fena degil",
+      "sayac3": 2,
+      "cevap4": "Gelistirilmeli",
+      "sayac4": 2
+    }
+  },
+  {
+    "KullaniciId": 6,
+    "anketid": 19,
+    "baslik": "Hangi tak\u0131m\u0131 tutuyorsunuz?",
+    "createdTime": "3.01.2022 17:31:31",
+    "onoff": true,
+    "kod": 111111,
+    "cevaplar": {
+      "anketid": 19,
+      "cevap1": "Fb",
+      "sayac1": 13,
+      "cevap2": "Gs",
+      "sayac2": 10,
+      "cevap3": "Bjk",
+      "sayac3": 11,
+      "cevap4": "Ts",
+      "sayac4": 4
+    }
+  },
+  {
+    "KullaniciId": 7,
+    "anketid": 21,
+    "baslik": "Hangi sosyal mecray\u0131 daha \u00E7ok seviyorsunuz?",
+    "createdTime": "20.03.2022 17:29:52",
+    "onoff": true,
+    "kod": 111117,
+    "cevaplar": {
+      "anketid": 21,
+      "cevap1": "Facebook",
+      "sayac1": 1,
+      "cevap2": "\u0130nstagram",
+      "sayac2": 2,
+      "cevap3": "Youtube",
+      "sayac3": 3,
+      "cevap4": "Twitter",
+      "sayac4": 0
+    }
+  }
+]

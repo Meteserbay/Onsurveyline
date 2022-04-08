@@ -1,0 +1,89 @@
+﻿#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #34495e;
+}
+
+#menu ul li {
+    position: relative;
+}
+
+#menu li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid silver;
+}
+
+#menu li a:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+#menu li:hover ul {
+    display: block;
+}
+
+#menu ul li ul {
+    position: absolute;
+    top: 0;
+    display: none;
+}
+
+#sonuc,#oyla {
+    position: relative;
+    background-color: #34495e;
+    border: none;
+    color: white;
+    border-radius:10px;
+    padding: 20px;
+    margin:5px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#sonuc:after {
+    content: "";
+    background: #34495e;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+#oyla:after {
+    content: "";
+    background: #34495e;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+
+#oyla:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+#sonuc:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}

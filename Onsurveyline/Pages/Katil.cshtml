@@ -1,0 +1,134 @@
+﻿@page
+@model Onsurveyline.Pages.KatilModel
+@{
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Onsurveyline</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1" id="nav">
+                    @if (Model.ViewData["login"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Giris">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Kayit">Kayıt Ol</a>
+                        </li>
+                    }
+                    @if (Model.ViewData["login"] != null)
+                    {
+                        <li class="nav-item">
+                            <form method="post" asp-page-handler="Cikis">
+                                <button style="border-radius:10px; " class="nav-link text-dark" asp-page-handler="Cikis" asp-area="" asp-page="/Index">Çıkış</button>
+                            </form>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div>
+    <div class="jumbotron" style="background-color:#34495e">
+        <h1 style="text-align:center; color:white">Ankete Katıl</h1>
+        <p style="text-align: center; color: white" class="lead">Ankete ait kodu girerek katıl!</p>
+    </div>
+    <div class="row">
+        <div style=" border-radius:5px;" class="col-md-3" id="menu">
+            <ul>
+                @if (Model.ViewData["login"] != null)
+                {
+                    <li><a href="/Profil">Profilim</a></li>
+                }
+                <li><a href="/Katil">Ankete Katıl</a></li>
+                <li><a href="/Trend">Trend Anketler</a></li>
+                <li><a href="/Olustur">Anket Oluştur</a></li>
+            </ul>
+        </div>
+        <div style=" border-radius: 5px;  background-color: #34495e;" class="col-md-9">
+            <br />
+            <form asp-page-handler="Katil" style="margin:5px;" method="post">
+                <div class="form-group">
+                    <label style="color:white;">Kod: </label>
+                    <input class="form-control" asp-for="@Model.kod">
+                </div>
+                <button type="submit" class="btn btn-primary">Ankete Katıl</button>
+                <br /><br />
+            </form>
+        </div>
+
+        <div class="col-md-3"></div>
+
+        @if (Model.oyKullandiMi == false)
+        {
+
+            @if (Model.istenilenAnket != null)
+            {
+                <form asp-page-handler="Oyla" method="post">
+                    <div style=" border-radius: 5px; margin-top:10px;  background-color: #34495e;" class="col-md-12">
+                        <br />
+                        <h4 style=" text-align: center;    color: white; ">@Model.istenilenAnket.baslik</h4>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+                            <div>
+                                @Html.RadioButtonFor(Model => Model.Secim1, Model.istenilenAnket.cevaplar.cevap1)
+                                @*<input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="qweqwe" autocomplete="off">*@
+                                <label style="color:white;" class="btn btn-outline-primary" for="btnradio1">@Model.istenilenAnket.cevaplar.cevap1</label>
+                            </div>
+                            <div>
+                                @Html.RadioButtonFor(Model => Model.Secim2, Model.istenilenAnket.cevaplar.cevap2)
+                                @*<input asp-for="Secim2" type="radio" class="btn-check" name="btnradio" id="btnradio2" value="asdasd" autocomplete="off">*@
+                                <label style="color:white;" class="btn btn-outline-primary" for="btnradio2">@Model.istenilenAnket.cevaplar.cevap2</label>
+                            </div>
+                            <div>
+                                @Html.RadioButtonFor(Model => Model.Secim3, Model.istenilenAnket.cevaplar.cevap3)
+                                @*<input asp-for="Secim3" type="radio" class="btn-check" name="btnradio" id="btnradio3" value="ertert" autocomplete="off">*@
+                                <label style="color:white;" class="btn btn-outline-primary" for="btnradio3">@Model.istenilenAnket.cevaplar.cevap3</label>
+                            </div>
+                            <div>
+                                @Html.RadioButtonFor(Model => Model.Secim4, Model.istenilenAnket.cevaplar.cevap4)
+                                @*<input asp-for="Secim4" type="radio" class="btn-check" name="btnradio" id="btnradio4" value="tyutyuyt" autocomplete="off">*@
+                                <label style="color:white;" class="btn btn-outline-primary" for="btnradio4">@Model.istenilenAnket.cevaplar.cevap4</label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <button id="oyla" style="background-color:white; color: #34495e;" class="btn btn-primary" type="submit">Oyla</button>
+                        <br />
+                        <br />
+                    </div>
+                </form>
+            }
+        }
+    <div class="col-md-3"></div>
+        @if (Model.oyKullandiMi == true)
+        {
+            <div class="col-md-6" style="background-color:#34495e"></div>
+            <div style=" border-radius: 5px; margin-top:10px;  background-color: #34495e;" class="col-md-12">
+                <br />
+                <h4 style=" text-align: center;    color: white; ">@Model.yeniİstenilenAnket.baslik</h4>
+                <p style="margin:5px; color:white;"></p>
+                <p style="margin: 5px; color: white;">@Model.yeniİstenilenAnket.cevaplar.cevap1 - %@Model.secim1yuzde - @Model.yeniİstenilenAnket.cevaplar.sayac1 oy kullanıldı.</p>
+                <p style="margin: 5px; color: white;">@Model.yeniİstenilenAnket.cevaplar.cevap2 - %@Model.secim2yuzde - @Model.yeniİstenilenAnket.cevaplar.sayac2 oy kullanıldı. </p>
+                <p style="margin: 5px; color: white;">@Model.yeniİstenilenAnket.cevaplar.cevap3 - %@Model.secim3yuzde - @Model.yeniİstenilenAnket.cevaplar.sayac3 oy kullanıldı. </p>
+                <p style="margin: 5px; color: white;">@Model.yeniİstenilenAnket.cevaplar.cevap4 - %@Model.secim4yuzde - @Model.yeniİstenilenAnket.cevaplar.sayac4 oy kullanıldı. </p>
+                <p style="margin: 5px; color: white;">Oyunuzu kullandınız: @Model.secilenCevap</p>
+
+                <br />
+                <br />
+            </div>
+
+        }
+
+
+
+    </div>
+    
+</div>

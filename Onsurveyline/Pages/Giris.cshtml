@@ -1,0 +1,101 @@
+﻿@page
+@model Onsurveyline.Pages.GirisModel
+@{
+}
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Onsurveyline</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1" id="nav">
+                    @if (Model.ViewData["login"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Giris">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Kayit">Kayıt Ol</a>
+                        </li>
+                    }
+                    @if (Model.ViewData["login"] != null)
+                    {
+                <li class="nav-item">
+                    <form method="post">
+                        <button style="border-radius:10px; " class="nav-link text-dark" asp-page-handler="Cikis" asp-area="" asp-page="/Index">Çıkış</button>
+                    </form>
+                </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+@if (Model.Status == 1)
+{
+    <div class="alert alert-success" role="alert" >
+        Kayıt başarıyla oluşturuldu.
+    </div>
+
+
+}
+@if (Model.Status == 2)
+{
+    <div class="alert alert-danger">
+        Kullanıcı adı veya şifre hatalı.
+    </div>
+
+}
+
+<div>
+    <div class="jumbotron" style="background-color:#34495e">
+        <h1 style="text-align:center; color:white">Giriş Yap</h1>
+        <p style="text-align: center; color: white" class="lead">Hesabınız yoksa ücretsiz bir şekilde oluşturabilirsiniz!</p>
+    </div>
+    <div class="row">
+        <div style="border-radius:5px;" class="col-md-3" id="menu">
+            <ul>
+                @if (Model.ViewData["login"] != null)
+                {
+                    <li><a href="/Profil">Profilim</a></li>
+                }
+
+                <li><a href="/Katil">Ankete Katıl</a></li>
+                <li><a href="/Trend">Trend Anketler</a></li>
+                <li><a href="/Olustur">Anket Oluştur</a></li>
+            </ul>
+        </div>
+        <form asp-page-handler="Form" class="col-md-9" method="post" style=" border-radius: 5px; background-color: #34495e; ">
+            <br />
+            <div class="form-group">
+                <label style="color:white;">Kullanıcı Adı: </label>
+                <input asp-for="kullaniciAd" required class="form-control col-md-4" type="text">
+            </div>
+            <div class="form-group">
+                <label style="color:white;">Şifre: </label>
+                <input asp-for="sifre" type="password" required class="form-control col-md-4">
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            <br />
+            <a style="color:white; " href="/Kayit">Hesabınız yoksa buraya tıklayarak oluşturabilirsiniz!</a>
+            <br />
+            <br />
+        </form>
+        @*<div>
+                @foreach (var kullanici in Model.kullanicilar)
+                {
+                    <p>Kullanıcı Adı: @kullanici.kullaniciAdi</p>
+                    <p>Şifre: @kullanici.sifre</p>
+                }
+            </div>*@
+    </div>
+</div>
